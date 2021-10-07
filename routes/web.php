@@ -23,3 +23,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 ///----MIS RUTAS ---///
 Route::resource('/tareas', App\Http\Controllers\TaskController::class);
+
+Route::get('/cambiar-estado/{id}', 'App\Http\Controllers\TaskController@status')->name('tareas.status');
