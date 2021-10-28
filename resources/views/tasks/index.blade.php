@@ -30,9 +30,9 @@
                             <td> {{ $task->description }} </td>
                             <td>
                                 @if($task->is_complete == false)
-                                <span class="badge bg-warning">Pendientes</span>
+                                <span class="badge bg-warning">Pendiente</span>
                                 @else
-                                <span class="badge bg-warning">Completada</span>
+                                <span class="badge bg-success">Completada</span>
                                 @endif
                             </td>
                             <td>

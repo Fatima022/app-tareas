@@ -22,13 +22,14 @@
                         <br>
                         <div class="form-group">
                             <label for="">Descripción</label>
-                            <textarea name="description" class="form-control" rows="5">
-                            </textarea>
+                            <textarea name="description" class="form-control" rows="5"></textarea>
                         </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </form>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -35,12 +35,18 @@ class TaskController extends Controller
         $task->deadline = $request->deadline;
         $task->description = $request->description;
         $task->is_complete = false;
+        $task->project_id = $request->project_id;
 
         $task->save();
 
         Session::flash('exito','Tarea Guardada');
 
-        return redirect()->route('tareas.index');
+        if ($request->source == 'proyectos'){
+            return redirect()->route('proyectos.index');
+        }else {
+            return redirect()->route('tareas.index');
+        }
+
     }
 
     
