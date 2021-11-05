@@ -31,6 +31,16 @@
                                 {{ $task->description }}
                             </textarea>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="SelectUserId">Selecciona usuario</label>
+                            <select class="form-control" id="SelectUserId" name="user_id" multiple="">
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <br>
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                         <a href="{{ route('tareas.index') }}" class="btn btn-outline-dark">Cancelar</a>

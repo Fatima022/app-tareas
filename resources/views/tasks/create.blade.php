@@ -24,10 +24,19 @@
                             <label for="">Descripción</label>
                             <textarea name="description" class="form-control" rows="5"></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Seleccionar usuario</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="user_id">
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <a href=" {{route ('tareas.index') }} " class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Agregar</button> 
                 </div>
                 </form>
             </div>

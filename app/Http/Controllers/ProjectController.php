@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -11,7 +13,10 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('projects.index')->with('projects', $projects);
+        $users = User::all();
+
+        $tasks = Task::all();
+        return view('projects.index')->with('projects', $projects)->with('users', $users)->with('tasks', $tasks);
     }
 
     
@@ -24,18 +29,23 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $project = new Project;
+        $tasks = Task::all();
+
         $project->name = $request->name;
         $project->description = $request->description;
         $project->status = $request->status;
+        $users = $request->user_id;
 
         $project->save();
-        return redirect()->back();
+        $project->users()->sync($request->user_id);
+
+        return redirect()->back()->with('users', $users);
     }
 
     
     public function show(Project $project)
     {
-        //
+        // 
     }
 
     

@@ -18,13 +18,19 @@
     <div class="card-body">
         <h5> {{ $project->name }} </h5>
         <h7>{{ $project->description }}</h7>
+        @foreach ($project->users as $user)
+		    <p>{{ $user->name }}</p>
+		@endforeach
         <hr>
+
         <a href="" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#modalCrearTareas_{{$project->id}}">Crear Tarea</a>
         
         @foreach($project->tasks as $task)
             <div class="d-flex aling-items-center justify-content-between">
                 <div style="width:60%;">
                     <p class="mb-0">{{ $task->title }}</p>
+                    <p class="mb-0">Usuarios: {{ $task->user->name }}</p>
+
                     @if($task->is_complete == false)
                         <span class="badge bg-warning">Pendiente</span>
                         @else
@@ -69,7 +75,8 @@
             {{csrf_field() }}
 
             <input type="hidden" name="source" value="proyectos" readonly="">
-            <input type="hidden" name="project_id" value="{{ $project->id }}">
+            <input type="hidden" name="project_id" value="{{ $project->id }}" readonly="">
+            <input type="hidden" name="user_id" value="{{ $project->id }}" readonly="">
 
             <div class="modal-body">
                 <div class="form-grpup">
@@ -86,6 +93,14 @@
                     <label>Descripcion</label>
                     <input name="description" class="form-control" row="5">
                 </div>
+                <div class="form-group">
+				    <label for="SelectUserId">Selecciona usuario</label>
+				    <select class="form-control" id="SelectUserId" name="user_id">
+				    	@foreach($project->users as $user)
+				            <option value="{{ $user->id }}">{{ $user->name }}</option>
+				        @endforeach
+				    </select>
+				</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -95,5 +110,7 @@
         </div>
     </div>
 </div>
+
+
             
 
