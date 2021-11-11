@@ -23,7 +23,7 @@ class CreateTasksTable extends Migration
             $table->text('description')->nullable();
             $table->boolean('is_complete')->default(false);
             //este no va
-            $table->string('user_id');
+            //$table->string('user_id');
 
 
             $table->timestamps();
